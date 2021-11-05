@@ -1,4 +1,4 @@
-# NHL-jääkiekkoilijoiden arviointi- ja keskutelufoorumi
+# NHL-jääkiekkoilijoiden arviointi- ja keskustelufoorumi
 
 Sovelluksen avulla voidaan tarkastella erilaisia tilastoja NHL-jääkiekkoilijoista sekä arvostella pelikorttimaisesti pelaajien taitojen eri osa-alueita.
 
