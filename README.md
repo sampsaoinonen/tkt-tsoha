@@ -27,7 +27,7 @@ Sovelluksen avulla voidaan tarkastella erilaisia tilastoja NHL-jääkiekkoilijoi
 
 #### Vastaan tulleet hankaluudet
 
-* Datan hakeminen suoraan nettiosoitteesta ei onnistunut monen yrityksen jälkeen. Tarvitsen tähän apua.
+* Datan hakeminen suoraan nettiosoitteesta ei onnistunut monen yrityksen jälkeen.
 
 #### TODO seuraavaksi
 
