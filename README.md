@@ -41,4 +41,4 @@ Sovelluksen avulla voidaan tarkastella erilaisia tilastoja NHL-jääkiekkoilijoi
 
 * Sovellus voisi ehkä olla universaali pallo- tai urheilulajeihin, jossa aloitussivulla käyttäjä voisi laittaa CSV-tiedoston tai linkin, jonka perusteella data haetaan.
 
-
+## https://tsoha-nhl.herokuapp.com
