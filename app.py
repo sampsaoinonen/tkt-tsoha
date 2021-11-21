@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from os import getenv
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = getenv("DATABASE_URL")   
+app.config["SQLALCHEMY_DATABASE_URI"] = getenv("DATABASE_URL").replace("://", "ql://", 1)   
 db = SQLAlchemy(app)
 
 with open("nhl-stats.csv") as stats:                #here data from already downloaded csv-file 
