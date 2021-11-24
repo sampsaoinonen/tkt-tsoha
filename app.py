@@ -46,8 +46,8 @@ def page(id):
 def send():
     content = request.form["content"]
     players_id = request.form["id"]
-    if len(content) > 10:
-        return render_template("error.html", error="Your comment is too long(over 5000 characters)!")
+    if len(content) > 500:
+        return render_template("error.html", error="Your comment is too long(over 500 characters)!")
     sql = "INSERT INTO comments (content, players_id) VALUES (:content, :players_id)"
     db.session.execute(sql, {"content":content, "players_id":players_id})
     db.session.commit()        
