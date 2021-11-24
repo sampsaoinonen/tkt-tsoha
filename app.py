@@ -3,10 +3,13 @@ from flask import Flask
 from flask import redirect, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from os import getenv
+import urllib.request
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = getenv("DATABASE_URL").replace("://", "ql://", 1)   
+#app.config["SQLALCHEMY_DATABASE_URI"] = getenv("DATABASE_URL") ## this one works locally
+app.config["SQLALCHEMY_DATABASE_URI"] = getenv("DATABASE_URL").replace("://", "ql://", 1) #this one works in Heroku   
 db = SQLAlchemy(app)
+
 
 with open("nhl-stats.csv") as stats:                #here data from already downloaded csv-file 
     for row in csv.reader(stats, delimiter=","):    #is being parsed into sql-table        
@@ -43,6 +46,8 @@ def page(id):
 def send():
     content = request.form["content"]
     players_id = request.form["id"]
+    if len(content) > 10:
+        return render_template("error.html", error="Your comment is too long(over 5000 characters)!")
     sql = "INSERT INTO comments (content, players_id) VALUES (:content, :players_id)"
     db.session.execute(sql, {"content":content, "players_id":players_id})
     db.session.commit()        
