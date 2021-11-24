@@ -46,6 +46,8 @@ def page(id):
 def send():
     content = request.form["content"]
     players_id = request.form["id"]
+    if len(content) == 0:
+        return render_template("error.html", error="You are trying to send an empty comment!")
     if len(content) > 500:
         return render_template("error.html", error="Your comment is too long(over 500 characters)!")
     sql = "INSERT INTO comments (content, players_id) VALUES (:content, :players_id)"
