@@ -42,25 +42,9 @@
       </tr>
     {% for player in players %}    
       <tr>
-        <th><a href="{{player[0]}}">{{player[1]}}</a></th>        
-        <th>{{player[2]}}</th> 
-        <th>{{player[3]}}</th>
-        <th>{{player[4]}}</th>
-        <th>{{player[5]}}</th>
-        <th>{{player[6]}}</th>   
-        <th>{{player[7]}}</th>
-        <th>{{player[8]}}</th>
-        <th>{{player[9]}}</th>
-        <th>{{player[10]}}</th>
-        <th>{{player[11]}}</th>
-        <th>{{player[12]}}</th>
-        <th>{{player[13]}}</th>
-        <th>{{player[14]}}</th>
-        <th>{{player[15]}}</th>
-        <th>{{player[16]}}</th>
-        <th>{{player[17]}}</th>
+        <th><a href="{{player[0]}}">{{player[1]}}</a></th>  
+        {% for player_data in player [2:]%}
+        <th>{{player_data}}</th>        
+        {% endfor %}              
       </tr>
     {% endfor %}
-
-    
-

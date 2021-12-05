@@ -41,4 +41,28 @@ Sovelluksen avulla voidaan tarkastella erilaisia tilastoja NHL-jääkiekkoilijoi
 
 * Sovellus voisi ehkä olla universaali pallo- tai urheilulajeihin, jossa aloitussivulla käyttäjä voisi laittaa CSV-tiedoston tai linkin, jonka perusteella data haetaan.
 
+## Välipalautus 3
+
+#### Toteutuneet toiminnot
+* Sovellus on jaoteltu selkeämmin useaan eri tiedostoon
+* Statistiikkaa voi listata isommasta pienempään ja toisin päin
+* Rekisteröinti ja kirjautuminen mahdollista
+* Kommentointi mahdollista vain kirjautuneena
+* Kommentti-kentän validointi
+* Rekisteröitynyt voi uploadata csv-tiedoston
+* Taulun sarakkeiden nimet haetaan suoraan csv-tiedostosta eli ohjelma tulee olemaan ns. universaali csv-tiedostojen lukemiseen(pääosin tosin urhailu/palloilupeleihin tilastointi näkökulman takia)
+
+#### Kesken olevat toiminnot
+* Tarkoitus on, että rekisteröitynyt käyttäjä voi ottaa käyttöön lataamansa csv-tiedoston nyt ohjelmassa olevan esimerkki tiedoston tilalle. Tämä on vielä jonkun verran kesken.
+* Tauluja pitäisi keksiä lisää(jos kerran tavoite on 5-10 taulua). Pelaajien arviointi voisi olla ainakin yksi.
+
+#### Vastaantulleet haasteet
+* Ohjelman muuttaminen geneeriseksi eri csv-tiedostoille olikin monimutkaisempaa sekä työläämpää kuin oletin, mutta on nyt hyvällä mallilla.
+* Kun kaikki luotavan taulun sarakkeet luodaan csv-tiedostosta ovat ne muotoa text. Tällöin on numeroiden ja nimien järjestykseen laittaminen haastavaa. Tähän toivoisin vinkkejä. Nyt numerot ovat järjestyksessä, mutta nimien aakkostaminen ei taas onnistu(varsinkaan kun koko nimi on samassa sarakkeessa). Myöskään jääkiekossa olevat +/- tilastot eivät järjesty oikein.
+
+#### TODO
+
+* Käyttäjän omasta csv-tiedosta taulujen luonti loppuun
+* Simppeleitä lisätoimintoja joista pari taulua lisää
+
 ## https://tsoha-nhl.herokuapp.com

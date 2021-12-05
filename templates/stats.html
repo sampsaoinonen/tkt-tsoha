@@ -1,0 +1,46 @@
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+    </head>
+    <body>
+    
+    <h2>Players</h2>
+    <a href="/{{upload_link}}">{{upload_link}}</a>
+    <a href="/{{log_link}}">{{log_link}}</a>
+    <table>
+      <tr>
+        {% for column in players_columns [1:]%} 
+          <th><a href="/organize/reverse/{{column}}">⬆︎</a></th>
+          {% endfor %}
+      </tr>
+      <tr>
+        {% for column in players_columns [1:]%} 
+          <th><a href="/organize/{{column}}">{{column}}</a></th>
+          {% endfor %}
+      </tr>
+      
+    {% for player in players %}        
+      <tr>
+        <th><a href="/{{player[0]}}">{{player[1]}}</a></th>  
+        {% for player_data in player [2:]%}
+        <th>{{player_data}}</th>        
+        {% endfor %}              
+      </tr>
+    {% endfor %}
+
+    
+
