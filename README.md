@@ -57,6 +57,7 @@ Sovelluksen avulla voidaan tarkastella erilaisia tilastoja NHL-jääkiekkoilijoi
 * Tauluja pitäisi keksiä lisää(jos kerran tavoite on 5-10 taulua). Pelaajien arviointi voisi olla ainakin yksi.
 
 #### Vastaantulleet haasteet
+* Jostain syystä sisäänkirjautuminen EI TOIMI Herokussa. Paikallisesti toimii, mutta Herokussa ilmoittaa "Internal Server Error". Herokun tietokantaan uusi käyttäjä tallentuu, mutta jostain syystä kirjautuminen eteenpäin ei onnistu. (Tämä tilanne 5.12)
 * Ohjelman muuttaminen geneeriseksi eri csv-tiedostoille olikin monimutkaisempaa sekä työläämpää kuin oletin, mutta on nyt hyvällä mallilla.
 * Kun kaikki luotavan taulun sarakkeet luodaan csv-tiedostosta ovat ne muotoa text. Tällöin on numeroiden ja nimien järjestykseen laittaminen haastavaa. Tähän toivoisin vinkkejä. Nyt numerot ovat järjestyksessä, mutta nimien aakkostaminen ei taas onnistu(varsinkaan kun koko nimi on samassa sarakkeessa). Myöskään jääkiekossa olevat +/- tilastot eivät järjesty oikein.
 
