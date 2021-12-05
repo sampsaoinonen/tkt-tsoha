@@ -4,6 +4,8 @@ from werkzeug.utils import secure_filename
 import players, downloader, comments, downloader, users
 import os
 
+if players.checkTableExists() == False:
+    downloader.get_data()
 players_columns = players.get_column_names()
 app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024 # this will set up max size for uploaded file
 uploads_dir = os.path.join('uploads')
