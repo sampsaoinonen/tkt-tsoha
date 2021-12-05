@@ -66,4 +66,4 @@ Sovelluksen avulla voidaan tarkastella erilaisia tilastoja NHL-jääkiekkoilijoi
 * Käyttäjän omasta csv-tiedosta taulujen luonti loppuun
 * Simppeleitä lisätoimintoja joista pari taulua lisää
 
-## https://tsoha-nhl.herokuapp.com
+## https://csv-stats.herokuapp.com/
