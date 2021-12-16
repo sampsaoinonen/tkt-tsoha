@@ -7,7 +7,7 @@ import os
 if players.checkTableExists() == False:
     downloader.get_data()
 players_columns = players.get_column_names()
-app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024 # this will set up max size for uploaded file
+app.config['MAX_CONTENT_LENGTH'] = 5000 * 5000 # this will set up max size for uploaded file
 uploads_dir = os.path.join('uploads')
 
 
@@ -63,13 +63,19 @@ def page(id):
 
 @app.route("/organize/<organize>")
 def org(organize):          
+    upload_link = ""
+    if users.user_id() != 0:
+        upload_link = "upload"
     result_organized = players.organize_players(organize)
-    return render_template("stats.html", players=result_organized, players_columns=players_columns, log_link=users.log_link())
+    return render_template("stats.html", players=result_organized, players_columns=players_columns, log_link=users.log_link(), upload_link=upload_link)
 
 @app.route("/organize/reverse/<organize_reverse>")
 def org_reverse(organize_reverse):          
+    upload_link = ""
+    if users.user_id() != 0:
+        upload_link = "upload"
     result_organized = players.organize_players_reverse(organize_reverse)
-    return render_template("stats.html", players=result_organized, players_columns=players_columns, log_link=users.log_link())
+    return render_template("stats.html", players=result_organized, players_columns=players_columns, log_link=users.log_link(), upload_link=upload_link)
 
 @app.route("/send", methods=["POST"])
 def send():

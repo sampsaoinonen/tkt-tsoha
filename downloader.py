@@ -1,6 +1,10 @@
 import csv
 from db import db
 
+#def get_data(file_name):    
+
+#    with open("uploads/" + file_name) as stats:      
+
 def get_data():    
 
     with open("nhl-stats.csv") as stats:                #here data from already downloaded csv-file 
