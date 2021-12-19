@@ -6,7 +6,7 @@ import os
 
 players_columns = players.get_column_names() # easier way to get column names than typing them all
 app.config['MAX_CONTENT_LENGTH'] = 10000 * 10000 # this will set up max size for uploaded file
-uploads_dir = os.path.join('uploads')
+uploads_dir = os.path.join('tmp')
 
 @app.route("/")     
 def index():        
@@ -85,14 +85,14 @@ def upload_file():
     f.save(os.path.join(uploads_dir, secure_filename(f.filename)))
     hidden = request.form.get("mycheckbox", default=False, type=bool)    
     if downloader.user_id_and_filename_used(f.filename, users.user_id()): # same filename from same user not allowed
-        os.remove("uploads/" + f.filename)
+        os.remove("tmp/" + f.filename)
         return render_template("error.html", error="You have already uploaded a csv-file named '" + f.filename 
         + "'!. If you are trying to upload a file with different content rename it.")    
     downloaded = downloader.get_data(f.filename, hidden, users.user_id())    
     if not downloaded:
-        os.remove("uploads/" + f.filename)        
+        os.remove("tmp/" + f.filename)        
         return render_template("error.html", error="CSV-file have to be in the Rotowire form!")
-    os.remove("uploads/" + f.filename)
+    os.remove("tmp/" + f.filename)
     fileid = downloader.get_fileid(f.filename)
     return render_template("uploaded.html", filename=f.filename, fileid=fileid)
 

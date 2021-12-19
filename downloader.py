@@ -3,7 +3,7 @@ from db import db
 
 def get_data(file_name, hidden, user_id):
 
-    with open("uploads/" + file_name) as stats: #CSV-file being inserted to tables            
+    with open("tmp/" + file_name) as stats: #CSV-file being inserted to tables            
         try:
             db.session.execute("INSERT INTO Files (file_name, hidden, created_at, user_id) VALUES (:file_name, :hidden, NOW(), :user_id)", {"file_name":file_name, "hidden":hidden,"user_id":user_id})        
             db.session.commit()
