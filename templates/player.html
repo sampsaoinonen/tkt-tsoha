@@ -36,8 +36,9 @@ Likes: {{likes[0]}}
 <hr>
 <h4>Comments:</h4>
 {% for comment in comments %}
-{{comment[0]}}: {{comment[1]}}
-<br>
+{{comment[0]}}: {{comment[1]}}<br>
+{{comment[2].strftime("%Y-%m-%d %H:%M:%S")}}
+<br><br>
 {% endfor %}
 <hr>
 

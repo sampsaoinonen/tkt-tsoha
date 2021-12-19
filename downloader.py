@@ -5,7 +5,7 @@ def get_data(file_name, hidden, user_id):
 
     with open("uploads/" + file_name) as stats: #CSV-file being inserted to tables            
         try:
-            db.session.execute("INSERT INTO Files (file_name, hidden, user_id) VALUES (:file_name, :hidden, :user_id)", {"file_name":file_name, "hidden":hidden, "user_id":user_id})        
+            db.session.execute("INSERT INTO Files (file_name, hidden, created_at, user_id) VALUES (:file_name, :hidden, NOW(), :user_id)", {"file_name":file_name, "hidden":hidden,"user_id":user_id})        
             db.session.commit()
             
             result = db.session.execute("SELECT id FROM Files WHERE file_name=:file_name AND user_id=:user_id", {"file_name":file_name, "user_id":user_id})
@@ -30,8 +30,8 @@ def user_id_and_filename_used(file_name, user_id):
         return True
     return False
 
-def get_filenames_and_ids(user_id):
-    result = db.session.execute("SELECT id, file_name FROM files WHERE user_id=:user_id OR hidden=:hidden" , {"user_id":user_id, "hidden":"f"}).fetchall()    
+def get_file_info(user_id):
+    result = db.session.execute("SELECT f.id, f.file_name, u.username, f.created_at FROM files f, users u WHERE user_id=:user_id OR hidden=:hidden AND f.user_id=u.id" , {"user_id":user_id, "hidden":"f"}).fetchall()    
     return result
 
 def get_fileid(file_name):

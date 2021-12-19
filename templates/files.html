@@ -3,10 +3,13 @@
 {% block content %}
  
 <div class="card text-center" style="width: 18rem;">
-    <ul class="list-group list-group-flush">
+    <table></table>
+        <tr>    
         {% for filename in filenames %} 
-      <li class="list-group-item"><a href="/files/{{filename[0]}}">{{filename[1]}}</a></li>
+        <a href="/files/{{filename[0]}}">{{filename[1]}}</a> Uploaded by {{filename[2]}} at {{filename[3].strftime("%Y-%m-%d")}}
         {% endfor %}      
-    </ul>
+    
+        </tr>
+    </table>
   </div>
   {% endblock %}

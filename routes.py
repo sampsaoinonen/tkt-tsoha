@@ -98,12 +98,12 @@ def upload_file():
 
 @app.route("/files")
 def files():
-    filenames_and_ids = downloader.get_filenames_and_ids(users.user_id())
-    return render_template("files.html", filenames=filenames_and_ids)
+    file_info = downloader.get_file_info(users.user_id())
+    return render_template("files.html", filenames=file_info)
 
 @app.route("/files/<fileid>")
 def stats(fileid):    
-    filenames_and_ids = downloader.get_filenames_and_ids(users.user_id())    
+    filenames_and_ids = downloader.get_file_info(users.user_id())    
     for f in filenames_and_ids:                
         if int(fileid) == f[0]: #lets check if user has rights to see the file
             result = players.get_players(fileid)
@@ -131,7 +131,7 @@ def organize_reverse(fileid, organize):
 @app.route("/files/<fileid>/<id>")
 def player(fileid=None, id=None):
     
-    filenames_and_ids = downloader.get_filenames_and_ids(users.user_id())
+    filenames_and_ids = downloader.get_file_info(users.user_id())
     for f in filenames_and_ids:
         if int(fileid) == f[0]:
             user_liked = users.get_liked(id, users.user_id())            
