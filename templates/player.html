@@ -48,6 +48,7 @@ Likes: {{likes[0]}}
     <input type="submit" value="Send">
     <input type="hidden" name="id" id="id" value="{{player[0]}}">
     <input type="hidden" name="fileid" id="fileid" value="{{fileid}}">
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
     </form>
 <br>
 <form action="/liked" method="POST">

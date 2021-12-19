@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, request, redirect, flash
+from flask import render_template, request, redirect, flash, abort
 from werkzeug.utils import secure_filename
 import players, downloader, comments, downloader, users
 import os
@@ -55,6 +55,9 @@ def register():
 
 @app.route("/send", methods=["POST"])
 def send():
+    csrf_token =request.form["csrf_token"]
+    if not users.check(csrf_token):
+        abort(403)
     content = request.form["content"]
     players_id = request.form["id"]
     fileid = request.form["fileid"]

@@ -1,6 +1,7 @@
 from db import db
 from flask import session
 from werkzeug.security import check_password_hash, generate_password_hash
+from secrets import token_hex
 
 def login(username, password):
     sql = "SELECT id, password FROM users WHERE username=:username"
@@ -11,6 +12,7 @@ def login(username, password):
     else:
         if check_password_hash(user.password, password):
             session["user_id"] = user.id
+            session["csrf_token"] = token_hex(16)
             return True
         else:
             return False
@@ -43,3 +45,6 @@ def set_liked(player_id, user_id):
     else:
         db.session.execute("INSERT INTO Playerlikes (likes, player_id, user_id) VALUES (:likes, :player_id, :user_id)", {"likes":"f", "player_id":player_id, "user_id":user_id})
         db.session.commit()
+
+def check(csrf_token):	
+	return session["csrf_token"] == csrf_token
