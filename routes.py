@@ -115,7 +115,7 @@ def organize(fileid, organize):
     filenames_and_ids = downloader.get_filenames_and_ids(users.user_id())    
     for f in filenames_and_ids:        
         if int(fileid) == f[0]:
-            result_organized = players.organize_players(organize, fileid)
+            result_organized = players.org_players(organize, fileid)
             return render_template("stats.html", players=result_organized, players_columns=players_columns,fileid=fileid)    
     return render_template("error.html", error="This file doesn't exists or you have no rights to view this!")
 
@@ -124,7 +124,7 @@ def organize_reverse(fileid, organize):
     filenames_and_ids = downloader.get_filenames_and_ids(users.user_id())    
     for f in filenames_and_ids:        
         if int(fileid) == f[0]:
-            result_organized = players.organize_players_reverse(organize, fileid)
+            result_organized = players.org_players_reverse(organize, fileid)
             return render_template("stats.html", players=result_organized, players_columns=players_columns, fileid=fileid)    
     return render_template("error.html", error="This file doesn't exists or you have no rights to view this!")
 

@@ -19,6 +19,7 @@ def login(username, password):
 
 def logout():
     del session["user_id"]
+    del session["csrf_token"]
 
 def register(username, password):
     hash_value = generate_password_hash(password)
@@ -43,7 +44,8 @@ def set_liked(player_id, user_id):
         db.session.commit()
     
     else:
-        db.session.execute("INSERT INTO Playerlikes (likes, player_id, user_id) VALUES (:likes, :player_id, :user_id)", {"likes":"f", "player_id":player_id, "user_id":user_id})
+        db.session.execute("INSERT INTO Playerlikes (likes, player_id, user_id) VALUES (:likes, :player_id, :user_id)", 
+        {"likes":"f", "player_id":player_id, "user_id":user_id})
         db.session.commit()
 
 def check(csrf_token):	
