@@ -1,21 +1,4 @@
-<style>
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-    
-    td, th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
-    
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
-    </style>
-    </head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/clay/lib/css/atlas.css">
     <body>
     
     <h2>Players</h2>
@@ -23,20 +6,20 @@
     <a href="/{{log_link}}">{{log_link}}</a>
     <table>
       <tr>
-        {% for column in players_columns [1:]%} 
-          <th><a href="/organize/reverse/{{column}}">⬆︎</a></th>
+        {% for column in players_columns [1:-1]%} 
+          <th><a href="/files/{{fileid}}/organize/reverse/{{column}}">⬆︎</a></th>
           {% endfor %}
       </tr>
       <tr>
-        {% for column in players_columns [1:]%} 
-          <th><a href="/organize/{{column}}">{{column}}</a></th>
+        {% for column in players_columns [1:-1]%} 
+          <th><a href="/files/{{fileid}}/organize/{{column}}">{{column}}</a></th>
           {% endfor %}
       </tr>
       
     {% for player in players %}        
       <tr>
-        <th><a href="/{{player[0]}}">{{player[1]}}</a></th>  
-        {% for player_data in player [2:]%}
+        <th><a href="/files/{{fileid}}/{{player[0]}}">{{player[1]}}</a></th>  
+        {% for player_data in player [2:-1]%}
         <th>{{player_data}}</th>        
         {% endfor %}              
       </tr>

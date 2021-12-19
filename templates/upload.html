@@ -1,9 +1,14 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/clay/lib/css/atlas.css">
+<script src="https://cdn.jsdelivr.net/npm/clay/lib/js/clay.js"></script>
+
 <html>
    <body>
       <form action = "/uploader" method = "POST" 
          enctype = "multipart/form-data">
          <input type = "file" name = "file" />
+         <input type="checkbox" name="mycheckbox" value="hidden"/>
          <input type = "submit"/>
+         
       </form>
-   </body>
+   </body>   
 </html>
