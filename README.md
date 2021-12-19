@@ -65,4 +65,26 @@ Sovelluksen avulla voidaan tarkastella erilaisia tilastoja NHL-jääkiekkoilijoi
 * Käyttäjän omasta csv-tiedosta taulujen luonti loppuun
 * Simppeleitä lisätoimintoja joista pari taulua lisää
 
+## Lopullinen palautus
+
+#### Toteutuneet toiminnot
+
+* Käyttäjä voi kirjautua sisään
+* Käyttäjä voi pelaajia kommentoida vain kirjautuneena
+* Käyttäjä voi kirjautuneena tykätä pelaajasta ja tykkäysten summa näytetään sivulla
+* Käyttäjä voi ladata tiedoston vain kirjautuneena
+* Halutessaan tiedoston voi klikata "hidden", jolloin se näkyy vain käyttäjälle itselleen
+* Ohjelma muuttaa CSV-tiedoston tiedoksi sql-tauluihin
+* Timestampit kommenteissa ja tiedoston latauksissa
+* Käyttäjä voi järjestää eri tavoin tilastot pelaajista
+
+
+
+#### Vastaantulleet haasteet
+
+* Mietin monta tuntia miksi sovellus ei toiminut Herokussa - tmp-hakemistossa pitää olla yksi tiedosto pushatessa, että Heroku tunnistaa hakemiston(!!)
+* Universaali CSV-tiedoston SQL-tauluihin muuttaja valmistui hyvin pitkälle, mutta SQL-haut olivat tässä tapauksessa rajoittuneita
+
+
+
 ## https://csv-stats.herokuapp.com/
