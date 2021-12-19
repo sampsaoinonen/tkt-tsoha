@@ -1,9 +1,25 @@
-<form action="/register" method="post">
-Username: <input type="text" name="username">
-<p>
-Password: <input type="password" name="password1">
-<p>
-Password again: <input type="password" name="password2">
-<p>
-<input type="submit" value="Create user">
+{% extends "layout.html" %}
+{% block title %} NHL {% endblock %}
+{% block content %}
+<form action="/register" onsubmit="return validateForm()" method="post">
+    <div class="form-group">
+        <label>Username: </label>
+        <br>
+        <input type="text" name="username" class="form-control form-control" placeholder="jackjohnson" required>
+    </div>
+    <div class="form-group">
+        <label>Password: </label>
+        <br>
+        <input type="password" name="password1" class="form-control form-control" placeholder="Min 5 characters" required>
+    </div>
+    <div class="form-group">
+        <label>Password: </label>
+        <br>
+        <input type="password" name="password2" class="form-control form-control" placeholder="Repeat your password" required>
+    </div>
+    <div class="form-group">
+        <br>
+        <button type="submit" class="btn btn-primary">Create User</button>
+    </div>
 </form>
+{% endblock %}

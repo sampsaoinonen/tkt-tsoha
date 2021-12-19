@@ -1,3 +1,6 @@
+{% extends "layout.html" %}
+{% block title %} NHL {% endblock %}
+{% block content %}
 <style>
     table {
       font-family: arial, sans-serif;
@@ -12,14 +15,9 @@
     }
     
     tr:nth-child(even) {
-      background-color: #dddddd;
+      background-color: #c0c5c9;
     }
-    </style>
-    </head>
-    <body>
-    <a href="/">Back to Index</a> <a href="/{{log_link}}">{{log_link}}</a>
-    <h2>Player statistics</h2>
-    
+</style>   
     <table>
       <tr>
         {% for column in players_columns [1:-1]%} 
@@ -33,31 +31,32 @@
         {% endfor %}
       </tr>
     </table>
+<br>
+Likes: {{likes[0]}}
+<hr>
+<h4>Comments:</h4>
+{% for comment in comments %}
+{{comment[0]}}: {{comment[1]}}
+<br>
+{% endfor %}
+<hr>
+
+<form action="/send" method="POST">
+    Your comment here{{logged_comment}}: <br>
+    <textarea name="content" rows="3" cols="60"></textarea>
     <br>
-    Likes:{{likes[0]}}
-    <hr>
-    <h3>Comments:</h3>
-    {% for comment in comments %}
-    {{comment[0]}}: {{comment[1]}}
-    <br>
-    {% endfor %}
-    <hr>
-    
-    <form action="/send" method="POST">
-        Your comment here{{logged_comment}}: <br>
-        <textarea name="content" rows="3" cols="60"></textarea>
-        <br>
-        <input type="submit" value="Send">
-        <input type="hidden" name="id" id="id" value="{{player[0]}}">
-        <input type="hidden" name="fileid" id="fileid" value="{{fileid}}">
-        </form>
-    <br>
-    <form action="/liked" method="POST">
-      <input type="hidden" name="id" id="id" value="{{player[0]}}">
-      <input type="hidden" name="fileid" id="fileid" value="{{fileid}}">
-      <button name="liked" value="{{player[0]}}">
-        {% if user_liked %}Remove your like{% endif %}
-        {% if not user_liked %}Like this player{% endif %}
-      </button>      
+    <input type="submit" value="Send">
+    <input type="hidden" name="id" id="id" value="{{player[0]}}">
+    <input type="hidden" name="fileid" id="fileid" value="{{fileid}}">
     </form>
+<br>
+<form action="/liked" method="POST">
+  <input type="hidden" name="id" id="id" value="{{player[0]}}">
+  <input type="hidden" name="fileid" id="fileid" value="{{fileid}}">
+  <button name="liked" value="{{player[0]}}">
+    {% if user_liked %}Remove your like{% endif %}
+    {% if not user_liked %}Like this player{% endif %}
+  </button>      
+</form>
+{% endblock %}
           

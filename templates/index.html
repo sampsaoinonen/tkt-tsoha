@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %} NHL {% endblock %}
+{% block content %}
+<a href="/" class="text-decoration-none text-dark">
+    <div class="card mb-3">
+      <img src="/static/images/nhl.png" class="card-img-top" alt="nhl_background">
+      <div class="card-body bg-light">
+        <h2 class="card-title">From CSV-file to statistics</h2>
+        <p class="card-text">This is a CSV-file to statistics converter. It is made for NHL statistics provided by 
+          <a href="https://www.rotowire.com/hockey/stats.php">Rotowire</a> or files with similar form. You can browse open for everyone CSV-files and read comments while being logged out.
+          If you register and sign in you have more features like: uploading CSV-files(open for all or hidden), commenting players and hit like-button.
+        </p>
+      </div>
+    </div>
+  </a>
+  
+<table>
+    {% for filename in filenames %}
+    <tr>
+      <th><a href="/files/{{filename[0]}}">{{filename[1]}}</a></th>  
+                    
+    </tr>
+  {% endfor %}
+
+
+  
+
+</table>
+{% endblock %}

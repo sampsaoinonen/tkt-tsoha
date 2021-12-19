@@ -1,12 +1,12 @@
-<table>
-    {% for filename in filenames %}        
-    <tr>
-      <th><a href="/files/{{filename[0]}}">{{filename[1]}}</a></th>  
-                    
-    </tr>
-  {% endfor %}
-
-
-
-
-</table>
+{% extends "layout.html" %}
+{% block title %} NHL {% endblock %}
+{% block content %}
+ 
+<div class="card text-center" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+        {% for filename in filenames %} 
+      <li class="list-group-item"><a href="/files/{{filename[0]}}">{{filename[1]}}</a></li>
+        {% endfor %}      
+    </ul>
+  </div>
+  {% endblock %}
