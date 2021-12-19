@@ -110,8 +110,9 @@ def upload_file():
     downloaded = downloader.get_data(f.filename, hidden, users.user_id())    
     if not downloaded:        
         return render_template("error.html", error="CSV-file have to be in the Rotowire form!")
-    os.remove("uploads/" + f.filename)    
-    return render_template("uploaded.html", filename=f.filename)
+    os.remove("uploads/" + f.filename)
+    fileid = downloader.get_fileid(f.filename)
+    return render_template("uploaded.html", filename=f.filename, fileid=fileid)
 
 @app.route("/files")
 def files():

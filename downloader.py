@@ -35,11 +35,7 @@ def get_filenames_and_ids(user_id):
     result = db.session.execute("SELECT id, file_name FROM files WHERE user_id=:user_id OR hidden=:hidden" , {"user_id":user_id, "hidden":"f"}).fetchall()    
     return result
 
-def get_fileids(user_id):
-    result = db.session.execute("SELECT id FROM files WHERE user_id=:user_id OR hidden=:hidden" , {"user_id":user_id, "hidden":"f"}).fetchall()
-    fileids = []
-    for r in result:        
-        stripped = str(r).replace(",", "").replace("('", "").replace("')", "")        
-        fileids.append(stripped)        
-    return fileids
+def get_fileid(file_name):
+    result = db.session.execute("SELECT id FROM files WHERE file_name=:file_name" , {"file_name":file_name}).fetchone()          
+    return result
     
