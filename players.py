@@ -48,11 +48,9 @@ def is_column_type_text(column): # gives boolean is column type text or not
     result = db.session.execute("SELECT data_type FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'players' AND COLUMN_NAME = '" + column + "'")
     return str(result.fetchone()[0]) == "text"
 
-def likes_and_dislikes(id):
-    result = db.session.execute("SELECT count(L.likes) FROM Players P, Playerlikes L WHERE L.player_id=:id AND L.likes='t' AND L.player_id=P.id", {"id":id})
-    likes = result.fetchone()[0]
-    result = db.session.execute("SELECT count(L.likes) FROM Players P, Playerlikes L WHERE L.player_id=:id AND L.likes='f' AND L.player_id=P.id", {"id":id})
-    dislikes = result.fetchone()[0]
-    return likes, dislikes
+def get_likes(id):
+    result = db.session.execute("SELECT count(L.likes) FROM Players P, Playerlikes L WHERE L.player_id=:id AND L.player_id=P.id", {"id":id})
+    likes = result.fetchone()
+    return likes
     
 

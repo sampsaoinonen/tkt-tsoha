@@ -34,7 +34,7 @@
       </tr>
     </table>
     <br>
-    Likes:{{likes[0]}} Dislikes: {{likes[1]}}
+    Likes:{{likes[0]}}
     <hr>
     <h3>Comments:</h3>
     {% for comment in comments %}
@@ -52,14 +52,12 @@
         <input type="hidden" name="fileid" id="fileid" value="{{fileid}}">
         </form>
     <br>
-    <form action="/like" method="POST">
-      <button name="liked" value="{{ liked }}" class="btn btn-primary">
-          {% if liked %}Click to like this player{% endif %}
-          {% if not liked %}Click to dislike this player{% endif %}
-      </button>
-      <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+    <form action="/liked" method="POST">
+      <input type="hidden" name="id" id="id" value="{{player[0]}}">
+      <input type="hidden" name="fileid" id="fileid" value="{{fileid}}">
+      <button name="liked" value="{{player[0]}}">
+        {% if user_liked %}Remove your like{% endif %}
+        {% if not user_liked %}Like this player{% endif %}
+      </button>      
     </form>
-
-
-    
-                
+          

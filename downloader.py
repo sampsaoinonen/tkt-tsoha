@@ -1,10 +1,6 @@
 import csv
 from db import db
 
-#def get_data(file_name):    x
-
-#    with open("uploads/" + file_name) as stats:      
-
 def get_data(file_name, hidden, user_id):
 
     with open("uploads/" + file_name) as stats:                #here data from already downloaded csv-file                 
@@ -27,8 +23,7 @@ def get_data(file_name, hidden, user_id):
 
 def user_id_and_filename_used(file_name, user_id):    
     result = db.session.execute("SELECT count(*) FROM files WHERE file_name=:file_name AND user_id=:user_id", {"file_name":file_name, "user_id":user_id})
-    if result.fetchone()[0] > 0:
-        print("okoooooooo")
+    if result.fetchone()[0] > 0:        
         return True
     return False
 

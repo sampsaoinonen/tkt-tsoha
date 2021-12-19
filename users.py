@@ -36,3 +36,22 @@ def log_link():  #this is used to make a link logout or login for every html-pag
         return "logout"
     else:
         return "login"
+
+def get_liked(player_id, user_id): 
+    result = db.session.execute("SELECT likes FROM PlayerLikes WHERE player_id=:player_id AND user_id=:user_id", {"player_id":player_id, "user_id":user_id})
+    return result.fetchone()
+       
+def set_liked(player_id, user_id):
+    if get_liked(player_id, user_id):
+        db.session.execute("DELETE FROM Playerlikes WHERE player_id=:player_id AND user_id=:user_id", {"player_id":player_id, "user_id":user_id})
+        db.session.commit()
+    
+    else:
+        db.session.execute("INSERT INTO Playerlikes (likes, player_id, user_id) VALUES (:likes, :player_id, :user_id)", {"likes":"f", "player_id":player_id, "user_id":user_id})
+        db.session.commit()
+
+def upload_link():
+    link = ""
+    if user_id() != 0:
+        link = "upload"
+    return link
