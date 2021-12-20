@@ -103,8 +103,8 @@ def files():
 
 @app.route("/files/<fileid>")
 def stats(fileid):    
-    filenames_and_ids = downloader.get_file_info(users.user_id())    
-    for f in filenames_and_ids:                
+    file_info = downloader.get_file_info(users.user_id())    
+    for f in file_info:                
         if int(fileid) == f[0]: #lets check if user has rights to see the file
             result = players.get_players(fileid)
             return render_template("stats.html", players=result, players_columns=players_columns, fileid=fileid)    
@@ -112,8 +112,8 @@ def stats(fileid):
 
 @app.route("/files/<fileid>/organize/<organize>")
 def organize(fileid, organize):             
-    filenames_and_ids = downloader.get_file_info(users.user_id())    
-    for f in filenames_and_ids:        
+    file_info = downloader.get_file_info(users.user_id())    
+    for f in file_info:        
         if int(fileid) == f[0]:
             result_organized = players.org_players(organize, fileid)
             return render_template("stats.html", players=result_organized, players_columns=players_columns,fileid=fileid)    
@@ -121,8 +121,8 @@ def organize(fileid, organize):
 
 @app.route("/files/<fileid>/organize/reverse/<organize>")
 def organize_reverse(fileid, organize):    
-    filenames_and_ids = downloader.get_file_info(users.user_id())    
-    for f in filenames_and_ids:        
+    file_info = downloader.get_file_info(users.user_id())    
+    for f in file_info:        
         if int(fileid) == f[0]:
             result_organized = players.org_players_reverse(organize, fileid)
             return render_template("stats.html", players=result_organized, players_columns=players_columns, fileid=fileid)    
@@ -131,8 +131,8 @@ def organize_reverse(fileid, organize):
 @app.route("/files/<fileid>/<id>")
 def player(fileid=None, id=None):
     
-    filenames_and_ids = downloader.get_file_info(users.user_id())
-    for f in filenames_and_ids:
+    file_info = downloader.get_file_info(users.user_id())
+    for f in file_info:
         if int(fileid) == f[0]:
             user_liked = users.get_liked(id, users.user_id())            
             result_player = players.get_player(id)
