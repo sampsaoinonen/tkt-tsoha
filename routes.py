@@ -112,7 +112,7 @@ def stats(fileid):
 
 @app.route("/files/<fileid>/organize/<organize>")
 def organize(fileid, organize):             
-    filenames_and_ids = downloader.get_filenames_and_ids(users.user_id())    
+    filenames_and_ids = downloader.get_file_info(users.user_id())    
     for f in filenames_and_ids:        
         if int(fileid) == f[0]:
             result_organized = players.org_players(organize, fileid)
@@ -121,7 +121,7 @@ def organize(fileid, organize):
 
 @app.route("/files/<fileid>/organize/reverse/<organize>")
 def organize_reverse(fileid, organize):    
-    filenames_and_ids = downloader.get_filenames_and_ids(users.user_id())    
+    filenames_and_ids = downloader.get_file_info(users.user_id())    
     for f in filenames_and_ids:        
         if int(fileid) == f[0]:
             result_organized = players.org_players_reverse(organize, fileid)
